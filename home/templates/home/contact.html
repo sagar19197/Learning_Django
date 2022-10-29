@@ -1,0 +1,32 @@
+{% extends "home/base.html" %}
+
+{% block title %}
+Contact us
+{% endblock %}
+
+{% block body %}
+<h3>This is contact us page</h3>
+
+<form method="POST" action = "/">
+	{% csrf_token %}
+	<input type="text" name = "username" placeholder="Enter your name">
+	<input type="text" name = "phn" placeholder="Enter your phn">
+	<input type="email" name = "email" placeholder="Enter your email">
+	<input type="date" name = "date" placeholder="Enter your name">
+	<button type = "submit" name = "submit" value = "submit">Submit</button>
+	
+</form>
+
+<h3> This form is for custom user </h3>
+
+<form method="POST" action = "/contact/">
+	{% csrf_token %}
+	<input type="text" name = "username" placeholder="Enter your name">
+	<input type="email" name = "email" placeholder="Enter your email">
+	<input type="password" name = "pass" placeholder="Enter your password">
+	<input type = "text" name= "bio" placeholder ="Enter your bio">
+	<button type = "submit" name = "submit" value = "submit">Submit</button>
+	
+</form>
+
+{% endblock %}

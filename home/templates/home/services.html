@@ -1,0 +1,37 @@
+{% extends "home/base.html" %}
+
+{% block title %}
+Services | Learning Django
+{% endblock %}
+
+{% block body %}
+	<h3>This is Serivces page</h3>
+	<h3>Showing Database information</h3>
+	<ol>
+		{% for ob in data %}
+			<li>Data with id {{ob.id}}:</li>
+				<ul>
+					<li>Name : {{ob.name}}</li>
+					<li>phn : {{ob.phn}}</li>
+					<li>email : {{ob.email}}</li>
+					<li>Date : {{ob.data}}</li>
+				</ul>
+				{% if ob.name == "Saaf" %}
+					<h4>This is Saaf entries</h4>
+				{% else %}
+					<h4>This is not Saaf entries</h4>
+				{% endif%}
+		{% endfor %}
+	</ol>
+	<h3> Showing Profile details </h3>
+	<ol>
+		{% for ob in data2 %}
+			<li>USER with id {{ob.id}}:</li>
+				<ul>
+					<li>Name : {{ob.user.username}}</li>
+					<li>EMAIL : {{ob.user.email}}</li>
+					<li>BIO : {{ob.bio}}</li>
+				</ul>
+		{%endfor%}
+	</ol>
+{% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<title>
+				{% block title %} 
+				{% endblock %}
+			</title>
+			<style>
+				h1 { font-family:sans-serif; 
+					 color: red;
+					 background: yellow;
+					 }
+			</style>
+	</head>
+	<body>
+		<h1>WELCOME to Django Learning Project</h1>
+		<hr>
+			{% block body %}
+			{% endblock%}
+	</body>
+</html>
