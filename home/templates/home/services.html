@@ -34,4 +34,15 @@ Services | Learning Django
 				</ul>
 		{%endfor%}
 	</ol>
+	<h3> Showing PDF details </h3>
+	<ol>
+		{% for ob in data3 %}
+			<li>PDF no {{ob.id}}:</li>
+				<ul>
+					<li>Name : {{ob.title}}</li>
+					<li>Link : <a href = "{{ob.pdf.url}}">PDF</a></li>
+				</ul>
+		{%endfor%}
+	</ol>
+
 {% endblock %}

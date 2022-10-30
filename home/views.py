@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import Contact, Profile
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, FileResponse
+from .models import Contact, Profile, PDFUpload
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
@@ -31,7 +31,8 @@ def contact(response):
 def services(response):
 	data = {
 		"data" : Contact.objects.all(),
-		"data2" : Profile.objects.all()
+		"data2" : Profile.objects.all(),
+		"data3" : PDFUpload.objects.all()
 	}
 	return render(response, "home/services.html",data);
 
@@ -49,3 +50,11 @@ def loginUser(response):
 def logoutUser(response):
 	logout(response);
 	return redirect("index");
+
+def securePDF(response, file):
+	if response.user.is_authenticated:
+		document = get_object_or_404(PDFUpload, pdf = "pdf/"+ file)
+		return FileResponse(document.pdf);
+	else:
+		return HttpResponse("404 ERROR not found")
+
